@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**/(*.css|*.js|*.map|*.jpg|*.gif|*.png|*.php)",
+        "destination": "/index.html"
+      }, {
+    "source" : "/websitecolors",
+    "destination" : "/",
+    "type" : 301
+    }]
+   }
+}
