@@ -2048,15 +2048,15 @@ header .logo a {
 }
 
 /**
- * section dns - (_layout.scss)
+ * section tor - (_layout.scss)
  * -------------------------------------------------------------------
  */
-.section-dns h2 {
+.section-tor h2 {
 	position: relative;
 	padding-bottom: 2.1rem;
 	text-align: center;
 }
-.section-dns h2::after {
+.section-tor h2::after {
 	content: "";
 	display: block;
 	height: 3px;
@@ -2067,10 +2067,10 @@ header .logo a {
 	bottom: 0;
 	margin-left: -40px;
 }
-.section-dns h2 a, .section-dns h2 a:visited {
+.section-tor h2 a, .section-tor h2 a:visited {
 	color: #313131;
 }
-.section-dns span {
+.section-tor span {
 	color: #3F0D39;
 }
 
