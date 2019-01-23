@@ -3,7 +3,12 @@
     "headers": [{
 	"source":"**",
 	"headers": [
-	  {"key":"Content-Security-Policy","value":"script-src 'self'"}
+	  {"key":"Content-Security-Policy","value":" default-src 'none'; font-src 'self' data:; img-src 'self'; script-src 'self'; style-src 'self' "},
+      {"key":"X-Frame-Options","value":"SAMEORIGIN"},
+      {"key":"X-XSS-Protection","value":"1; mode=block"},
+      {"key":"Referrer-Policy","value":"no-referrer"},
+      {"key":"Feature-Policy","value":"vibrate 'none'"},
+      {"key":"Hello","value":"World"}
 	]
 	}],
     "public": "public",
