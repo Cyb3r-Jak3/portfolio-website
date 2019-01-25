@@ -2596,11 +2596,39 @@ footer .copyright span:last-child::after {
 #go-top a:hover {
 	background: #000000;
 }
-.keylinks {
-    color: #8c8c8c
+.keylink {
+	color: #8c8c8c;
 }
-.emaillinks{
+.emaillink{
 	color: white
+}
+.CVSig {
+		display: inline-block;
+		font-family: "poppins-bold", sans-serif;
+		font-size: 1.4rem;
+		text-transform: uppercase;
+		letter-spacing: .3rem;
+		height: 5.4rem;
+		line-height: 5.4rem;
+		padding: 0 3rem;
+		margin: 0 .3rem 1.2rem 0;
+		background: #d8d8d8;
+		color: #313131;
+		text-decoration: none;
+		cursor: pointer;
+		text-align: center;
+		white-space: nowrap;
+		border: none;
+		-moz-transition: all 0.3s ease-in-out;
+		-o-transition: all 0.3s ease-in-out;
+		-webkit-transition: all 0.3s ease-in-out;
+		-ms-transition: all 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
+		width: 150px;
+		text-align: center;
+}
+.dockerpink{
+	color: pink;
 }
 
 /*# sourceMappingURL=main.css.map */

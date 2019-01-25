@@ -3,7 +3,7 @@
     "headers": [{
 	"source":"**",
 	"headers": [
-	  {"key":"Content-Security-Policy","value":" default-src 'none'; font-src 'self' data:; img-src 'self'; script-src 'self'; style-src 'self' "},
+	  {"key":"Content-Security-Policy","value":"default-src 'self' ; script-src 'self' ; style-src * ; img-src 'self' ; font-src 'self' ; media-src 'self' ; object-src 'self'; reflected-xss block; report-uri https://jwhite.report-uri.com/r/d/csp/enforce; "},
       {"key":"X-Frame-Options","value":"SAMEORIGIN"},
       {"key":"X-XSS-Protection","value":"1; mode=block"},
       {"key":"Referrer-Policy","value":"no-referrer"},
