@@ -2603,7 +2603,7 @@ footer .copyright span:last-child::after {
 .keylink:hover{
 	color: #cc005f;
 }
-.emaillink{
+.emaillink, .emaillink:visited{
 	color: white
 }
 .CVSig {
