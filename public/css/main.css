@@ -2596,8 +2596,11 @@ footer .copyright span:last-child::after {
 #go-top a:hover {
 	background: #000000;
 }
-.keylink {
+.keylink, .keylink:visited{
 	color: #8c8c8c;
+}
+.keylink:hover{
+	color: #cc005f;
 }
 .emaillink{
 	color: white
@@ -2627,7 +2630,7 @@ footer .copyright span:last-child::after {
 		width: 150px;
 		text-align: center;
 }
-.dockerpink{
+.dockerpink, .dockerpink:link{
 	color: pink;
 }
 
