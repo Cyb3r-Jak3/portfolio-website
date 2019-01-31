@@ -18,7 +18,7 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-  
+
   /* Enable Ligatures ================ */
   letter-spacing: 0;
   -webkit-font-feature-settings: "liga";
@@ -438,7 +438,10 @@
 }
 .icon-keybase:before {
   content: "\e968";
-  color: #33a0ff;
+  color: white;
+}
+.icon-keybase::after, .icon-keybase:hover {
+	color: #cc005f;
 }
 .icon-umbraco:before {
   content: "\e969";
