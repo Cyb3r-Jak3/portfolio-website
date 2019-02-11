@@ -8,7 +8,8 @@
       {"key":"X-XSS-Protection","value":"1; report=https://jwhite.report-uri.com/r/d/xss/enforce"},
       {"key":"Referrer-Policy","value":"no-referrer"},
       {"key":"Hello","value":"World"},
-      {"key":"Expect-Staple","value":"max-age=31536000; report-uri='https://jwhite.report-uri.com/r/d/staple/enforce'; includeSubDomains; preload"}
+      {"key":"Expect-Staple","value":"max-age=31536000; report-uri='https://jwhite.report-uri.com/r/d/staple/enforce'; includeSubDomains; preload"},
+      {"key":"Feature-Policy","value":"Feature-Policy: vibrate 'none';"}
 	]
 	}],
     "public": "public",
