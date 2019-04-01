@@ -17,6 +17,4 @@ pipelines:
             SERVER: '$ServerIP'
             REMOTE_PATH: '$RPath'
             LOCAL_PATH: 'public/**'
-            # SSH_KEY: '<string>' # Optional.
-            # EXTRA_ARGS: '<string>' # Optional.
-            # DEBUG: '<boolean>' # Optional.
+            EXTRA_ARGS: ' -P 2222'
