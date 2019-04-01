@@ -2597,6 +2597,27 @@ footer .copyright span:last-child::after {
 #go-top a:hover {
 	background: #000000;
 }
+
+/**
+ * tor:
+ * -------------------------------------------------------------------
+ */
+#tor .torheader {
+  color: #cc005f;
+  text-align: center;
+}
+#tor p {
+  color: #d8d8d8;
+}
+#tor a, a:visited {
+  color: #4a95cc;
+}
+
+
+/**
+ * custom:
+ * -------------------------------------------------------------------
+ */
 .keylink, .keylink:visited{
 	color: #8c8c8c;
 }
