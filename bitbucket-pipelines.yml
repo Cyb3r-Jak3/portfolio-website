@@ -18,3 +18,9 @@ pipelines:
             REMOTE_PATH: '$RPath'
             LOCAL_PATH: 'public/**'
             EXTRA_ARGS: ' -P 2222'
+    - step:
+          name: Deploy to Firebase
+          script:
+            - pipe: atlassian/firebase-deploy:0.2.3
+              variables:
+                FIREBASE_TOKEN: $FIREBASE_TOKEN
