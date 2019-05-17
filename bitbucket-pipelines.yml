@@ -9,7 +9,7 @@ pipelines:
   default:
     - step:
         name: Deploy to Host
-        deployment: production
+        deployment: onion host
         script:
         - pipe: atlassian/scp-deploy:0.3.1
           variables:
@@ -20,6 +20,7 @@ pipelines:
             EXTRA_ARGS: ' -P 2222'
     - step:
           name: Deploy to Firebase
+	  deployment: firebase
           script:
             - pipe: atlassian/firebase-deploy:0.2.3
               variables:
