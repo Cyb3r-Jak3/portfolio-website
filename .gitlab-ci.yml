@@ -20,7 +20,7 @@ before_script:
 deploy_staging:
   stage: deploy1
   script:
-  - scp -rp -P 2222 /public/*  $DeployUser@$ServerIP:$RPath
+  - scp -rp -P 2222 /builds/jwhite1st/Portfolio-Website/public/*  $DeployUser@$ServerIP:$RPath
   environment:
     name: Self_Host
     url: https://portfolio.jwhite.network
