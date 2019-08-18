@@ -18,7 +18,7 @@ before_script:
   - chmod 644 ~/.ssh/known_hosts
 
 deploy_staging:
-  stage: deploy
+  stage: deploy1
   script:
   - scp -rp -P 2222 /public/*  $DeployUser@$ServerIP:$RPath
   environment:
@@ -33,7 +33,7 @@ deploy_prod:
     - npm install -g firebase-tools
     - firebase use --token $FIREBASE_TOKEN default
     - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_TOKEN
-  enviroment:
+  environment:
     name: Public
     url: https://www.jwhite.network
   only:
