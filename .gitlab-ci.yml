@@ -1,4 +1,4 @@
-image: node:latest
+
 
 cache:
   paths:
@@ -10,6 +10,7 @@ stages:
 
 
 deploy_staging:
+  image: debian:latest 
   before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
   - eval $(ssh-agent -s)
@@ -28,6 +29,7 @@ deploy_staging:
    - master
 
 deploy_prod:
+  image: node:latest 
   stage: deploy2
   script:
     - npm install -g firebase-tools
