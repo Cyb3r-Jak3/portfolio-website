@@ -29,7 +29,7 @@ deploy_staging:
    - master
 
 deploy_prod:
-  image: node:latest 
+  image: kroniak/ssh-client
   stage: deploy2
   script:
     - npm install -g firebase-tools
