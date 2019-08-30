@@ -11,7 +11,8 @@ deploy_staging:
   - echo "$SSH_P_KEY" | tr -d '\r' | ssh-add - > /dev/null
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
-  - ssh-keyscan -p 2222 $ServerIP > ~/.ssh/known_hosts
+  - SSHKEY=`ssh-keyscan $ServerIP 2> /dev/null`
+  - echo $SSHKEY > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
   stage: deploy1
   script:
