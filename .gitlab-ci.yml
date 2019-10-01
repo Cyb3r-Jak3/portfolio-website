@@ -8,6 +8,7 @@ html_test:
   stage: html_test
   image: python:2.7
   before_script:
+    - add-apt-repository ppa:openjdk-r/ppa
     - apt-get -qq update && apt-get -qq install -y openjdk-8-jre
     - pip install html5validator
   script:
