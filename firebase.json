@@ -10,7 +10,7 @@
     {"key":"Referrer-Policy","value":"no-referrer"},
     {"key":"Hello","value":"World"},
     {"key":"Expect-Staple","value":"max-age=31536000; report-uri='https://jwhite.report-uri.com/r/d/staple/enforce'; includeSubDomains; preload"},
-    {"key":"Feature-Policy","value":"vibrate 'none'; ambient-light-sensor 'none'; autoplay 'none'; accelerometer 'none'; camera 'none'; display-capture 'none'; document-domain 'none'; encrypted-media 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; speaker 'none'; sync-xhr 'none'; wake-lock 'none'; webauthn 'none'; vr; 'none'"},
+    {"key":"Feature-Policy","value":"vibrate 'none'; ambient-light-sensor 'none'; autoplay 'none'; accelerometer 'none'; camera 'none'; document-domain 'none'; encrypted-media 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; speaker 'none'; sync-xhr 'none'; vr 'none'"},
     {"key":"Strict-Transport-Security","value":"max-age=31536000; includeSubDomains; preload;"}
 	]
 	}],

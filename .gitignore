@@ -1,4 +1,3 @@
-firebase-debug.log
+.log
 .firebase/
 .firebaserc
-bitbucket-pipelines.yml
