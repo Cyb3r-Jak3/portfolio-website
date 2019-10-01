@@ -8,6 +8,7 @@ html_test:
   stage: html_test
   image: ubuntu:bionic
   before_script:
+    - apt-get install software-properties-common
     - add-apt-repository ppa:openjdk-r/ppa
     - apt-get -qq update && apt-get -qq install -y openjdk-8-jre
     - pip install html5validator
