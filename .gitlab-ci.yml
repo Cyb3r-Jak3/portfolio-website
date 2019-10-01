@@ -1,6 +1,17 @@
 stages:
-  - deploy1
-  - deploy2
+  - html_test
+  - deploy_staging
+  - deploy_production
+
+
+html_test:
+  stage: html_test
+  image: python:2.7
+  before_script:
+    - apt-get -qq update && apt-get -qq install -y openjdk-8-jre
+    - pip install html5validator
+  script:
+    - html5validator --root public/
 
 
 deploy_staging:
@@ -14,7 +25,7 @@ deploy_staging:
   - SSHKEY=`ssh-keyscan -p 2222 $ServerIP 2> /dev/null`
   - echo $SSHKEY > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
-  stage: deploy1
+  stage: deploy_staging
   script:
   - scp -rp -P 2222 /builds/jwhite1st/Portfolio-Website/public/*  $DeployUser@$ServerIP:$RPath
   environment:
@@ -25,7 +36,7 @@ deploy_staging:
 
 deploy_prod:
   image: node:latest 
-  stage: deploy2
+  stage: deploy_production
   cache:
     paths:
       - node_modules/
