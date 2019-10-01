@@ -9,4 +9,5 @@
 This is source code (if you could call it that) for my website.  
 All this repo contains is the html, css and javascript.
 
-My resume is also avaiable if you would rather download it from here as well as my public key. ![Keybase PGP](https://img.shields.io/keybase/pgp/jake1st)
+My resume is also available if you would rather download it from here as well as my public key.  
+![Keybase PGP](https://img.shields.io/keybase/pgp/jake1st)
