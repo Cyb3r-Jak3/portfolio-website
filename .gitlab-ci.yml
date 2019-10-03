@@ -14,7 +14,7 @@ html_test:
     - apt-get -qq install -y openjdk-8-jre
     - pip install html5validator
   script:
-    - html5validator --root public/
+    - html5validator --root public/ --format json 
 
 
 deploy_staging:
