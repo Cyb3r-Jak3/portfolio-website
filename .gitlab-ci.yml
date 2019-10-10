@@ -33,11 +33,8 @@ deploy_staging:
    - master
 
 deploy_prod:
-  image: node:latest 
+  image: devillex/docker-firebase
   stage: deploy_production
-  cache:
-    paths:
-      - /usr/local/lib/node_modules/
   script:
     - npm install -g firebase-tools
     - firebase use --token $FIREBASE_TOKEN personal-website-e2713
