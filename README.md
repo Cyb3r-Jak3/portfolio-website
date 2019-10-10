@@ -9,7 +9,7 @@
 ![Chromium HSTS preload](https://img.shields.io/hsts/preload/www.jwhite.network?style=flat-square)
 
 This is source code (if you could call it that) for my website.  
-All this repo contains is the html, css and javascript.
+All this repo contains is the html, css and javascript as well as other assorted files. I have a docker image that I use to test my HTML and CSS available [here](https://github.com/jwhite1st/html5validator-docker).
 
 My resume is also available if you would rather download it from here as well as my public key.  
 ![Keybase PGP](https://img.shields.io/keybase/pgp/jake1st)
