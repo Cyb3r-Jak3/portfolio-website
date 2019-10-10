@@ -7,7 +7,7 @@ stages:
 html_test:
 
   stage: html_test
-  image: jwhite1st/html5validtor:latest
+  image: jwhite1st/html5validator:latest
   script:
     - html5validator --root public/
 
