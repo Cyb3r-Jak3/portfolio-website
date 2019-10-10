@@ -5,18 +5,9 @@ stages:
 
 
 html_test:
-  cache:
-    paths:
-      - apt-cache/
 
   stage: html_test
-  image: ubuntu:bionic
-  before_script:
-    - apt-get -o dir::cache::archives="apt-cache" -qq update
-    - apt-get -o dir::cache::archives="apt-cache" install -y software-properties-common python-pip
-    - add-apt-repository ppa:openjdk-r/ppa
-    - apt-get -o dir::cache::archives="apt-cache" -qq install -y openjdk-8-jre
-    - pip install html5validator
+  image: jwhite1st/html5validtor:latest
   script:
     - html5validator --root public/
 
