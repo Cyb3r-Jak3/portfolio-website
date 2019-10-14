@@ -34,11 +34,11 @@
  * 01. webfonts and iconfonts - (_document-setup.scss)
  *
  * -------------------------------------------------------------------
- */
+ 
 @import url("fonts.css");
 @import url("micons/micons.css");
 @import url("font-awesome/css/fontawesome.css");
-
+*/
 
 /**
  * ===================================================================
@@ -524,7 +524,6 @@ select {
 	padding: 1.5rem 0;
 	border: 0;
 	outline: none;
-	vertical-align: middle;
 	color: #313131;
 	font-family: "poppins-regular", sans-serif;
 	font-size: 1.5rem;
@@ -1119,7 +1118,7 @@ header .logo a {
 	color: transparent;
 	width: 100px;
 	height: 20px;
-	background: url("../images/logo.png") no-repeat center;
+	background: url("../images/logo.webp") no-repeat center;
 	background-size: 100px 20px;
 }
 
@@ -1294,7 +1293,7 @@ header .logo a {
  * -------------------------------------------------------------------
  */
 #intro {
-	background: #151515 url(../images/intro-bg.png) no-repeat center bottom;
+	background: #151515 url(../images/intro-bg.webp) no-repeat center bottom;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -2097,7 +2096,7 @@ header .logo a {
  * -------------------------------------------------------------------
  */
 #services {
-	background: #313131 url(../images/bg.png) no-repeat center;
+	background: #313131 url(../images/bg.webp) no-repeat center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -2653,5 +2652,8 @@ footer .copyright span:last-child::after {
 		text-align: center;
 }
 .dockerpink, .dockerpink:link{
-	color: pink;
+	color: white;
+}
+.dockerpink:hover{
+	color: #cc005f;
 }

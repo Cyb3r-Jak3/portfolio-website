@@ -1,56 +1,47 @@
-image: ruby
-include:
-  template: Dependency-Scanning.gitlab-ci.yml
-
-
-cache:
-  paths:
-    - vendor/bundle
-
 stages:
- - build
- - test
- - deploy
+  - html_test
+  - deploy_staging
+  - deploy_production
 
 
-build:
-  stage: build
-  artifacts:
-     paths:
-     - /builds/jwhite1st/blog/_site/* 
+html_test:
+
+  stage: html_test
+  image: jwhite1st/html5validator:latest
   script:
-    - gem install bundler
-    - bundle install --path vendor/bundle
-    - bundle exec jekyll build
+    - html5validator --root public/
 
-test:
-  stage: test
-  dependencies:
-  - build
-  script:
-    - gem install bundler
-    - bundle install --path vendor/bundle
-    - bundle exec htmlproofer /builds/jwhite1st/blog/_site/ --url-ignore "/#.*/" --disable_external
 
-deploy:
+deploy_staging:
+  image: kroniak/ssh-client
   before_script:
-   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
-   - eval $(ssh-agent -s)
-   - echo "$SSH_P_KEY" | tr -d '\r' | ssh-add - > /dev/null
-   - mkdir -p ~/.ssh
-   - chmod 700 ~/.ssh
-   - ssh-keyscan -p 2222 $ServerIP > ~/.ssh/known_hosts
-   - chmod 644 ~/.ssh/known_hosts
-  stage: deploy
-  dependencies:
-   - build
-   - test
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_P_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - SSHKEY=`ssh-keyscan -p 2222 $ServerIP 2> /dev/null`
+  - echo $SSHKEY > ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  stage: deploy_staging
   script:
-  - scp -rp -P 2222 /builds/jwhite1st/blog/_site/*  $DeployUser@$ServerIP:$RPath
+  - scp -rp -P 2222 /builds/jwhite1st/Portfolio-Website/public/*  $DeployUser@$ServerIP:$RPath
   environment:
     name: Self_Host
-    url: https://blog.jwhite.network
-  when: manual
+    url: https://portfolio.jwhite.network
   only:
    - master
-   - schedules
+
+deploy_prod:
+  image: devillex/docker-firebase
+  stage: deploy_production
+  script:
+    - npm install -g firebase-tools
+    - firebase use --token $FIREBASE_TOKEN personal-website-e2713
+    - firebase deploy -m "Commit $CI_COMMIT_TITLE, Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_TOKEN
+  environment:
+    name: Public
+    url: https://www.jwhite.network
+  only:
+    - master
+  when: manual
