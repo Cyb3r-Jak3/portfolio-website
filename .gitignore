@@ -1,3 +1,14 @@
+<<<<<<< HEAD
 firebase-debug.log
 .firebase/
 .firebaserc
+=======
+_site/
+.sass-cache/
+.jekyll-metadata
+.jekyll-cache/
+vendor/**
+.bundle/**
+.vscode
+space.code-workspace
+>>>>>>> 9d4160a49ab4be8e60d5422ec9ef147dd80bfbb6
