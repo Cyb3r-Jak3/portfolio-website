@@ -8,10 +8,12 @@
     {"key":"X-Frame-Options","value":"SAMEORIGIN"},
     {"key":"X-XSS-Protection","value":"1; report=https://jwhite.report-uri.com/r/d/xss/enforce"},
     {"key":"Referrer-Policy","value":"no-referrer"},
-    {"key":"Hello","value":"World"},
+    {"key":"Hello","value":"Welcome to my website headers"},
     {"key":"Expect-Staple","value":"max-age=31536000; report-uri='https://jwhite.report-uri.com/r/d/staple/enforce'; includeSubDomains; preload"},
     {"key":"Feature-Policy","value":"vibrate 'none'; ambient-light-sensor 'none'; autoplay 'none'; accelerometer 'none'; camera 'none'; document-domain 'none'; encrypted-media 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; speaker 'none'; sync-xhr 'none'; vr 'none'"},
-    {"key":"Strict-Transport-Security","value":"max-age=31536000; includeSubDomains; preload;"}
+    {"key":"Strict-Transport-Security","value":"max-age=31536000; includeSubDomains; preload;"},
+    {"key":"Report-To","value":"{\"group\":\"default\",\"max_age\":31536000,\"endpoints\":[{\"url\":\"https://jwhite.report-uri.com/a/d/g\"}],\"include_subdomains\":true}"},
+    {"key":"NEL","value":"{\"report_to\":\"default\",\"max_age\":31536000,\"include_subdomains\":true}"}
 	]
 	}],
     "public": "public",
