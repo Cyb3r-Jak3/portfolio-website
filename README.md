@@ -14,4 +14,4 @@ All this repo contains is the html, css and javascript as well as other assorted
 My resume is also available if you would rather download it from here as well as my public key.  
 ![Keybase PGP](https://img.shields.io/keybase/pgp/jake1st)
 
-This website is KARDS which is available [here](https://www.styleshout.com/free-templates/kards/) and other information is in [Attribution](Attribution.txt) 
+This website is KARDS which is available [here](https://www.styleshout.com/free-templates/kards/) and other information is in [Attribution](Attribution.txt)
