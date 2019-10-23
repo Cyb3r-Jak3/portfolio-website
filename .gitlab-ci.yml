@@ -9,7 +9,7 @@ html_test:
   stage: html_test
   image: jwhite1st/html5validator:latest
   script:
-    - html5validator --root public/
+    - html5validator --root public/ --also-check-css --log INFO --format text
 
 
 deploy_staging:
@@ -36,7 +36,7 @@ deploy_prod:
   image: devillex/docker-firebase
   stage: deploy_production
   script:
-    - npm update -g firebase-tools
+    - npm i -g firebase-tools
     - firebase use --token $FIREBASE_TOKEN personal-website-e2713
     - firebase deploy -m "Commit $CI_COMMIT_TITLE, Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_TOKEN
   environment:
