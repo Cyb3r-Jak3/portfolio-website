@@ -9,7 +9,7 @@ html_test:
   stage: html_test
   image: jwhite1st/html5validator:latest
   script:
-    - html5validator --root public/ --also-check-css --log INFO --format text
+    - html5validator --root public/ --also-check-css --format text
 
 
 deploy_staging:
