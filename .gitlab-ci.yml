@@ -11,7 +11,6 @@ html_test:
   script:
     - html5validator --root public/ --also-check-css --log INFO
 
-
 deploy_staging:
   image: kroniak/ssh-client
   before_script:
@@ -21,6 +20,7 @@ deploy_staging:
   - chmod 700 ~/.ssh
   - echo $SSH_KNOWN > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
+  - cat ~/.ssh/known_hosts
   stage: deploy_staging
   script:
   - scp -rp -P 2222 /builds/jwhite1st/Portfolio-Website/public/*  $DeployUser@$ServerIP:$RPath
