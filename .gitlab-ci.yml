@@ -12,7 +12,7 @@ html_test:
     - date=`date +"%d %B %Y (%T %Z)"`
   script:
     - sed -i -e "s/BUILD_DATE\b/$date/g" public/index.html
-    - html5validator --root public/ --also-check-css --log INFO
+    - html5validator --root public/ --also-check-css --log INFO --ignore-re Attribute "built" Element "meta"
 
 deploy_staging:
   image: kroniak/ssh-client
