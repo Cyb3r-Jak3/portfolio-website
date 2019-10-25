@@ -8,7 +8,10 @@ html_test:
 
   stage: html_test
   image: jwhite1st/html5validator:latest
+  before_script:
+    - date=`date +"%d %B %Y (%T %Z)"`
   script:
+    - sed -i -e "s/BUILD_DATE\b/$date/g" public/index.html
     - html5validator --root public/ --also-check-css --log INFO
 
 deploy_staging:
