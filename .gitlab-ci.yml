@@ -9,19 +9,17 @@ html_test:
   stage: html_test
   image: jwhite1st/html5validator:latest
   script:
-    - html5validator --root public/ --also-check-css --format text
+    - html5validator --root public/ --also-check-css --log INFO
 
 
 deploy_staging:
   image: kroniak/ssh-client
   before_script:
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
   - eval $(ssh-agent -s)
   - echo "$SSH_P_KEY" | tr -d '\r' | ssh-add - > /dev/null
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
-  - SSHKEY=`ssh-keyscan -p 2222 $ServerIP 2> /dev/null`
-  - echo $SSHKEY > ~/.ssh/known_hosts
+  - echo $SSH_KNOWN > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
   stage: deploy_staging
   script:
