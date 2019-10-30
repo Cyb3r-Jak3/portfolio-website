@@ -5,13 +5,16 @@ stages:
 
 
 html_test:
-
   stage: html_test
   image: jwhite1st/html5validator:latest
   script:
     - date=`date +"%d %B %Y (%T %Z)"`
     - sed -i "/BUILD_DATE/{s//$date/g}"  public/index.html
     - html5validator --root public/ --also-check-css --log INFO --ignore-re Attribute "built" Element "meta"
+  artifacts:
+   paths:
+     - public/*
+   expire_in: 1 week
 
 deploy_staging:
   image: kroniak/ssh-client
@@ -24,7 +27,7 @@ deploy_staging:
   - chmod 644 ~/.ssh/known_hosts
   stage: deploy_staging
   script:
-  - scp -rp -P 2222 /builds/jwhite1st/Portfolio-Website/public/*  $DeployUser@$ServerIP:$RPath
+  - scp -rp -P 2222 /public/*  $DeployUser@$ServerIP:$RPath
   environment:
     name: Self_Host
     url: https://portfolio.jwhite.network
