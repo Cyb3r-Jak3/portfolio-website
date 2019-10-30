@@ -30,8 +30,7 @@ deploy_staging:
   - chmod 644 ~/.ssh/known_hosts
   stage: deploy_staging
   script:
-  - find . 
-  - scp -rp -P 2222 /public/*  $DeployUser@$ServerIP:$RPath
+  - scp -rp -P 2222 public/*  $DeployUser@$ServerIP:$RPath
   environment:
     name: Self_Host
     url: https://portfolio.jwhite.network
