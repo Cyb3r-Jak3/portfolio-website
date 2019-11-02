@@ -17,9 +17,6 @@ html_test:
    expire_in: 1 week
 
 deploy_staging:
-  artifacts:
-   paths:
-     - public/*
   image: kroniak/ssh-client
   before_script:
   - eval $(ssh-agent -s)
@@ -38,9 +35,6 @@ deploy_staging:
    - master
 
 deploy_prod:
-  artifacts:
-   paths:
-     - public/*
   image: devillex/docker-firebase
   stage: deploy_production
   script:
