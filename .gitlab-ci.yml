@@ -11,6 +11,7 @@ html_test:
     - date=`date +"%d %B %Y (%T %Z)"`
     - sed -i "/BUILD_DATE/{s//$date/g}"  public/index.html
     - html5validator --root public/ --also-check-css --log INFO --ignore-re Attribute "built" Element "meta"
+    - head public/index.html -n 20 | grep Built
   artifacts:
    paths:
      - public/*
@@ -38,7 +39,7 @@ deploy_prod:
   image: devillex/docker-firebase
   stage: deploy_production
   script:
-    - head public/index.html -n 20 | grep Built
+    - 
     - npm i -g firebase-tools
     - firebase use --token $FIREBASE_TOKEN personal-website-e2713
     - firebase deploy -m "Commit $CI_COMMIT_TITLE, Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_TOKEN

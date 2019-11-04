@@ -12,6 +12,6 @@ This is source code (if you could call it that) for my website.
 All this repo contains is the html, css and javascript as well as other assorted files. I have a docker image that I use to test my HTML and CSS available [here](https://github.com/jwhite1st/html5validator-docker).
 
 My resume is also available if you would rather download it from here as well as my public key.  
-![Keybase PGP](https://img.shields.io/keybase/pgp/jake1st)
+[![Keybase PGP](https://img.shields.io/keybase/pgp/jake1st)](https://keyserver.ubuntu.com/pks/lookup?search=0x1804B469&fingerprint=on&op=index)
 
 This website is KARDS which is available [here](https://www.styleshout.com/free-templates/kards/) and other information is in [Attribution](Attribution.txt)
