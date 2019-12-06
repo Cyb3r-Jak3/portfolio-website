@@ -1,7 +1,7 @@
 stages:
   - html_test
-  - deploy_staging
-  - deploy_production
+  - deploy_self
+  - deploy_firebase
   - clear
 
 
@@ -18,7 +18,7 @@ html_test:
      - public/*
    expire_in: 1 week
 
-deploy_staging:
+Self_Host_Deploy:
   image: cyb3rjak3/docker-curl-ssh
   before_script:
   - eval $(ssh-agent -s)
@@ -27,7 +27,7 @@ deploy_staging:
   - chmod 700 ~/.ssh
   - cat $SSH_KNOWN > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
-  stage: deploy_staging
+  stage: deploy_self
   script:
   - scp -rp -P 2222 public/*  $DeployUser@$ServerIP:$RPath
   environment:
@@ -36,9 +36,9 @@ deploy_staging:
   only:
    - master
 
-deploy_prod:
+Firebase_Deploy:
   image: devillex/docker-firebase
-  stage: deploy_production
+  stage: deploy_firebase
   script:
     - npm i -g firebase-tools
     - firebase use --token $FIREBASE_TOKEN personal-website-e2713
@@ -51,11 +51,11 @@ deploy_prod:
   when: manual
 
 
-  Clear_Cache:
+Clear_Cache:
   image: cyb3rjak3/docker-curl-ssh
   stage: clear
   needs:
-  - deploy_production
+  - Firebase_Deploy
   script:
   - chmod +x $script
   - bash $script
