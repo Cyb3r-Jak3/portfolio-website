@@ -11,7 +11,7 @@ html_test:
   script:
     - date=`date +"%d %B %Y (%T %Z)"`
     - sed -i "/BUILD_DATE/{s//$date/g}"  public/index.html
-    - html5validator --root public/ --also-check-css --log INFO --ignore-re Attribute "built" Element "meta"
+    - html5validator --root public/ --also-check-css --log INFO --format json --ignore-re Attribute "built" Element "meta"
     - head public/index.html -n 20 | grep Built
   artifacts:
    paths:
