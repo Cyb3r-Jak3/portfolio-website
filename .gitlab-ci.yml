@@ -1,12 +1,14 @@
 stages:
-  - html_test
+  - test
   - deploy_self
   - deploy_firebase
   - clear
 
+include:
+  - template: SAST.gitlab-ci.yml
 
 html_test:
-  stage: html_test
+  stage: test
   image: cyb3rjak3/html5validator:pypi
   script:
     - date=`date +"%d %B %Y (%T %Z)"`
@@ -19,6 +21,7 @@ html_test:
    expire_in: 1 week
 
 Self_Host_Deploy:
+  stage: deploy_self
   image: cyb3rjak3/docker-curl-ssh
   before_script:
   - eval $(ssh-agent -s)
@@ -27,7 +30,6 @@ Self_Host_Deploy:
   - chmod 700 ~/.ssh
   - cat $SSH_KNOWN > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
-  stage: deploy_self
   script:
   - scp -rp -P 2222 public/*  $DeployUser@$ServerIP:$RPath
   environment:
@@ -37,8 +39,8 @@ Self_Host_Deploy:
    - master
 
 Firebase_Deploy:
-  image: devillex/docker-firebase
   stage: deploy_firebase
+  image: devillex/docker-firebase
   script:
     - npm i -g firebase-tools
     - firebase use --token $FIREBASE_TOKEN personal-website-e2713
@@ -52,8 +54,8 @@ Firebase_Deploy:
 
 
 Clear_Cache:
-  image: cyb3rjak3/docker-curl-ssh
   stage: clear
+  image: cyb3rjak3/docker-curl-ssh
   needs:
   - Firebase_Deploy
   script:
