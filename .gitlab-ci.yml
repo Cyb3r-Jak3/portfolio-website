@@ -9,12 +9,12 @@ include:
 
 html_test:
   stage: test
-  image: cyb3rjak3/html5validator:pypi
+  image: cyb3rjak3/html5validator:latest
   script:
     - date=`date +"%d %B %Y (%T %Z)"`
     - sed -i "/BUILD_DATE/{s//$date/g}"  public/index.html
     - html5validator --root public/ --also-check-css --log INFO --format json --ignore-re Attribute "built" Element "meta"
-    - head public/index.html -n 20 | grep Built
+    - head public/index.html -n 11 | grep Built
   artifacts:
    paths:
      - public/*
