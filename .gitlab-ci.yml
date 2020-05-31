@@ -13,8 +13,8 @@ html_test:
   script:
     - date=`date +"%d %B %Y (%T %Z)"`
     - sed -i "/BUILD_DATE/{s//$date/g}"  public/index.html
-    - html5validator --root public/ --also-check-css --log INFO --format json --ignore-re Attribute "built" Element "meta"
     - head public/index.html -n 11 | grep Built
+    - html5validator --root public/ --also-check-css --log INFO --format json --ignore-re Attribute "built" Element "meta"
   artifacts:
    paths:
      - public/*
@@ -24,11 +24,11 @@ Self_Host_Deploy:
   stage: deploy_self
   image: cyb3rjak3/docker-curl-ssh
   before_script:
-  - eval $(ssh-agent -s)
+  #- eval $(ssh-agent -s)
   - echo "$SSH_P_KEY" | tr -d '\r' | ssh-add - > /dev/null
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  - cat $SSH_KNOWN > ~/.ssh/known_hosts
+  #- mkdir -p ~/.ssh
+  #- chmod 700 ~/.ssh
+  #- cat $SSH_KNOWN > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
   script:
   - scp -rp -P 2222 public/*  $DeployUser@$ServerIP:$RPath
@@ -37,12 +37,14 @@ Self_Host_Deploy:
     url: https://portfolio.jwhite.network
   only:
    - master
+   - schedules
 
 Firebase_Deploy:
   stage: deploy_firebase
   image: devillex/docker-firebase
+  before_script:
+    - npm i -g firebase-tools 
   script:
-    - npm i -g firebase-tools
     - firebase use --token $FIREBASE_TOKEN personal-website-e2713
     - firebase deploy -m "Commit $CI_COMMIT_TITLE, Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_TOKEN
   environment:
@@ -50,6 +52,7 @@ Firebase_Deploy:
     url: https://www.jwhite.network
   only:
     - master
+    - schedules
   when: manual
 
 
