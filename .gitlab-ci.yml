@@ -27,10 +27,7 @@ Self_Host_Deploy:
   - ls -al
   - eval $(ssh-agent -s)
   - echo "$SSH_P_KEY" | tr -d '\r' | ssh-add - > /dev/null
-  #- mkdir -p ~/.ssh
-  #- chmod 700 ~/.ssh
   - cat $SSH_KNOWN > ~/.ssh/known_hosts
-  #- chmod 644 ~/.ssh/known_hosts
   script:
   - scp -rp -P 2222 public/*  $DeployUser@$ServerIP:$RPath
   environment:
@@ -38,7 +35,6 @@ Self_Host_Deploy:
     url: https://portfolio.jwhite.network
   only:
    - master
-   - schedules
 
 Firebase_Deploy:
   stage: deploy_firebase
