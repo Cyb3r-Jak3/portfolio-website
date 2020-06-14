@@ -33,8 +33,6 @@ Self_Host_Deploy:
   environment:
     name: Self_Host
     url: https://portfolio.jwhite.network
-  only:
-   - master
 
 Firebase_Deploy:
   stage: deploy_firebase
@@ -49,8 +47,23 @@ Firebase_Deploy:
     url: https://www.jwhite.network
   only:
     - master
+  expect:
     - schedules
   when: manual
+
+Firebase_Deploy_Scheduled:
+  stage: deploy_firebase
+  image: devillex/docker-firebase
+  before_script:
+    - npm i -g firebase-tools 
+  script:
+    - firebase use --token $FIREBASE_TOKEN personal-website-e2713
+    - firebase deploy -m "Commit $CI_COMMIT_TITLE, Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_TOKEN
+  environment:
+    name: Public
+    url: https://www.jwhite.network
+  only:
+    - schedules
 
 
 Clear_Cache:
