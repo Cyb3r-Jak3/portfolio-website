@@ -24,7 +24,6 @@ Self_Host_Deploy:
   stage: deploy_self
   image: cyb3rjak3/docker-curl-ssh
   before_script:
-  - ls -al
   - eval $(ssh-agent -s)
   - echo "$SSH_P_KEY" | tr -d '\r' | ssh-add - > /dev/null
   - cat $SSH_KNOWN > ~/.ssh/known_hosts
@@ -72,5 +71,5 @@ Clear_Cache:
   needs:
   - Firebase_Deploy
   script:
-  - chmod +x $script
-  - bash $script
+    - >
+      curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache" -H "$API_KEY" -H "Content-Type: application/json"  --data '{"files":["https://www.jwhite.network/*", "https://portfolio.jwhite.network/*"]}'
