@@ -47,7 +47,11 @@ Firebase_Deploy:
     url: https://www.jwhite.network
   only:
     - master
+<<<<<<< HEAD
   except:
+=======
+  expect:
+>>>>>>> 0b5678085a94f4bbebbf0edca69090554ba2388b
     - schedules
   when: manual
 
