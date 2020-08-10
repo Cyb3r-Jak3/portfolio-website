@@ -1,6 +1,7 @@
 stages:
   - test
   - deploy_self
+  - dast
   - deploy_firebase
   - clear
 
