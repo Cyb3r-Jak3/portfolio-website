@@ -5,7 +5,11 @@ stages:
   - clear
 
 include:
+  - template: Dependency-Scanning.gitlab-ci.yml
   - template: SAST.gitlab-ci.yml
+  - template: Secret-Detection.gitlab-ci.yml
+  - template: DAST.gitlab-ci.yml
+  
 
 html_test:
   stage: test
@@ -33,6 +37,15 @@ Self_Host_Deploy:
     name: Self_Host
     url: https://portfolio.jwhite.network
 
+dast:
+  stage: dast
+  dependencies: []
+  variables: 
+    DAST_WEBSITE: https://portfolio.jwhite.network
+    DAST_FULL_SCAN_ENABLED: "true"
+    DAST_REQUEST_HEADERS: "User-Agent: DAST/1.0"
+          
+
 Firebase_Deploy:
   stage: deploy_firebase
   image: devillex/docker-firebase
@@ -48,7 +61,6 @@ Firebase_Deploy:
     - master
   except:
     - schedules
-  when: manual
 
 Firebase_Deploy_Scheduled:
   stage: deploy_firebase
@@ -63,6 +75,7 @@ Firebase_Deploy_Scheduled:
     url: https://www.jwhite.network
   only:
     - schedules
+    - master
 
 
 Clear_Cache:
