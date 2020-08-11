@@ -10,7 +10,6 @@ include:
   - template: SAST.gitlab-ci.yml
   - template: Secret-Detection.gitlab-ci.yml
   - template: DAST.gitlab-ci.yml
-  
 
 html_test:
   stage: test
@@ -58,26 +57,8 @@ Firebase_Deploy:
   environment:
     name: Public
     url: https://www.jwhite.network
-  only:
-    - master
-  except:
-    - schedules
-
-Firebase_Deploy_Scheduled:
-  stage: deploy_firebase
-  image: devillex/docker-firebase
-  before_script:
-    - npm i -g firebase-tools 
-  script:
-    - firebase use --token $FIREBASE_TOKEN personal-website-e2713
-    - firebase deploy -m "Commit $CI_COMMIT_TITLE, Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_TOKEN
-  environment:
-    name: Public
-    url: https://www.jwhite.network
-  only:
-    - schedules
-    - master
-
+  rules:
+    - if '$CI_COMMIT_BRANCH == "master"'
 
 Clear_Cache:
   stage: clear
