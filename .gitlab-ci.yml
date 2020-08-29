@@ -61,7 +61,7 @@ Firebase_Deploy:
     - if: '$CI_COMMIT_BRANCH == "master"'
       when: always
     - changes:
-      - public
+      - public/*
 
 Clear_Cache:
   stage: clear
