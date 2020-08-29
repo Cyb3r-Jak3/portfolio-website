@@ -58,7 +58,10 @@ Firebase_Deploy:
     name: Public
     url: https://www.jwhite.network
   rules:
-    - if '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: always
+    - changes:
+      - public
 
 Clear_Cache:
   stage: clear
