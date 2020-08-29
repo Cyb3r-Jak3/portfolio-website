@@ -37,6 +37,14 @@ Self_Host_Deploy:
     name: Self_Host
     url: https://portfolio.jwhite.network
 
+Clear_Dev_Cache:
+  stage: deploy_self
+  image: cyb3rjak3/docker-curl-ssh
+  script:
+    - >
+      sleep 10
+      curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache" -H "$API_KEY" -H "Content-Type: application/json"  --data '{"files":["https://portfolio.jwhite.network/*"]}'
+
 dast:
   stage: dast
   dependencies: []
@@ -62,11 +70,13 @@ Firebase_Deploy:
       changes:
         - public/*
 
-Clear_Cache:
+Clear_Public_Cache:
   stage: clear
   image: cyb3rjak3/docker-curl-ssh
-  needs:
-  - Firebase_Deploy
   script:
     - >
-      curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache" -H "$API_KEY" -H "Content-Type: application/json"  --data '{"files":["https://www.jwhite.network/*", "https://portfolio.jwhite.network/*"]}'
+      curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache" -H "$API_KEY" -H "Content-Type: application/json"  --data '{"files":["https://www.jwhite.network/*"]}'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      changes:
+        - public/*
