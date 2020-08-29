@@ -41,9 +41,8 @@ Clear_Dev_Cache:
   stage: deploy_self
   image: cyb3rjak3/docker-curl-ssh
   script:
-    - >
-      sleep 10
-      curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache" -H "$API_KEY" -H "Content-Type: application/json"  --data '{"files":["https://portfolio.jwhite.network/*"]}'
+      - sleep 10
+      - curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache" -H "$API_KEY" -H "Content-Type: application/json"  --data '{"files":["https://portfolio.jwhite.network/*"]}'
 
 dast:
   stage: dast
