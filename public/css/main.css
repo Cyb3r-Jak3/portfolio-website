@@ -2657,3 +2657,7 @@ footer .copyright span:last-child::after {
 .dockerpink:hover{
 	color: #cc005f;
 }
+
+#transFrame{
+	display: none;
+}
