@@ -179,7 +179,12 @@
                <a href="resumes/JacobWhiteResume.pdf.asc" title="Download Detached Signature" download="JacobWhiteResume.pdf.asc" class="CVSig">Detached</a>
                <a href="resumes/JacobWhiteResume.pdf.sig" title="Download Attached Signature" download="JacobWhiteResume.pdf.sig" class="CVSig">Attached</a>
                <a href="resumes/JacobWhiteResume.pdf.gpg" title="Download Signed PDF" download="resumes/JacobWhiteResume.pdf.gpg" class="CVSig">Signed PDF</a>
-               <P> My resume is signed by my personal key which is available at <a href="/#contact">Contact Me</a> section at the bottom.</p>
+               <p> My resume is signed by my personal key which is available at <a href="/#contact">Contact Me</a> section at the bottom.</p>
+               <p> Have your own key? Use the form below and I will encrypt my resume with it</p>
+                <form action="https://api.jwhite.network/encrypted_resume" method="POST" enctype="multipart/form-data" target="">
+                    <input name="key" type="file">
+                    <button type="submit">Encrypt</button>
+                </form>
            </div>
        </div>
 
