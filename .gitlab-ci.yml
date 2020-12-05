@@ -13,7 +13,7 @@ include:
 
 html_test:
   stage: test
-  image: cyb3rjak3/html5validator:latest
+  image: cyb3rjak3/html5validator:latest-slim
   script:
     - date=`date +"%d %B %Y (%T %Z)"`
     - sed -i "/BUILD_DATE/{s//$date/g}"  public/index.html
