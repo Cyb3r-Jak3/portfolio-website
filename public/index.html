@@ -88,11 +88,11 @@
        </div> <!-- /intro-content -->
 
        <ul class="intro-social">
-         <li><a target="_blank" href="https://www.linkedin.com/in/jacob-white-01/"><i class="fab fa-1x fa-linkedin"></i></a></li>
-         <li><a target="_blank" href="https://twitter.com/Cyb3r_Jak3"><i class="fab fa-1x fa-twitter"></i></a></li>
-         <li><a target="_blank" href="https://keybase.io/cyb3rjak3"><i class="fab fa-1x fa-keybase"></i></a></li>
-         <li><a target="_blank" href="https://github.com/Cyb3r-Jak3"><i class="fab fa-1x fa-github"></i></a></li>
-         <li><a target="_blank" href="https://gitlab.com/Cyb3r-Jak3"><i class="fab fa-1x fa-gitlab"></i></a> </li>
+         <li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jacob-white-01/"><i class="fab fa-1x fa-linkedin"></i></a></li>
+         <li><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Cyb3r_Jak3"><i class="fab fa-1x fa-twitter"></i></a></li>
+         <li><a target="_blank" rel="noopener noreferrer" href="https://keybase.io/cyb3rjak3"><i class="fab fa-1x fa-keybase"></i></a></li>
+         <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/Cyb3r-Jak3"><i class="fab fa-1x fa-github"></i></a></li>
+         <li><a target="_blank" rel="noopener noreferrer" href="https://gitlab.com/Cyb3r-Jak3"><i class="fab fa-1x fa-gitlab"></i></a> </li>
       </ul> <!-- /intro-social -->
 
    </section> <!-- /intro -->
@@ -113,7 +113,7 @@
                    <img src="images/about-small.png" alt="Profile Picture">
 
                    <p class="lead">Welcome to my website.
-                                   My main mirror <a href="https://www.jwhite.network" target="_blank">www.jwhite.network</a> is hosted with Google Firebase and I self-host <a href="https://portfolio.jwhite.network" target="_blank">portfolio.jwhite.network</a>.
+                                   My main mirror <a href="https://www.jwhite.network" target="_blank" rel="noopener noreferrer" >www.jwhite.network</a> is hosted with Google Firebase and I self-host <a href="https://portfolio.jwhite.network" rel="noopener noreferrer"  target="_blank">portfolio.jwhite.network</a>.
                                    I use Cloudflare for DNS and load balancing.</p>
                </div>
 
@@ -130,11 +130,11 @@
                <ul class="info-list">
                    <li>
                       <strong>Blog:</strong><br>
-                      <span><a href="https://blog.jwhite.network" target="_blank" title="Come Check Out My Blog!"> blog.jwhite.network</a></span>
+                      <span><a href="https://blog.jwhite.network" target="_blank" title="Come Check Out My Blog!" rel="noopener noreferrer" > blog.jwhite.network</a></span>
                    </li>
                    <li>
                        <strong>Projects:</strong><br>
-                       <span><a href="https://projects.jwhite.network" target="_blank" title="My project site"> projects.jwhite.network</a></span>
+                       <span><a href="https://projects.jwhite.network" target="_blank" title="My project site" rel="noopener noreferrer" > projects.jwhite.network</a></span>
                    </li>
 
                </ul> <!-- /info-list -->
@@ -149,21 +149,22 @@
                 <ul class="skill-bars">
 
                     <li>
-                       <div class="progress percent70"><span>80%</span></div>
-                       <strong>Python</strong> 4 years 
+                       <div class="progress percent80"><span>80%</span></div>
+                       <strong>Python</strong> 5 years 
                    </li>
                    <li>
                         <div class="progress percent70"><span>80%</span></div>
                         <strong>Networking</strong> 3 years
                    </li>
                    <li>
-                       <div class="progress percent60"><span>60%</span></div>
-                       <strong>Active Directory</strong> 3 years
-                   </li>
+                        <div class="progress percent60"><span>60%</span></div>
+                        <strong>Docker</strong> 2 years
+                    </li>
                    <li>
-                       <div class="progress percent35"><span>35%</span></div>
-                       <strong>Docker</strong> 2 years
+                       <div class="progress percent40"><span>40%</span></div>
+                       <strong>CI/CD Porcess and Implementation</strong> 2 years
                    </li>
+
 
                 </ul> <!-- /skill-bars -->
 
@@ -181,8 +182,8 @@
                <a href="resumes/JacobWhiteResume.pdf.gpg" title="Download Signed PDF" download="resumes/JacobWhiteResume.pdf.gpg" class="CVSig">Signed PDF</a>
                <p> My resume is signed by my personal key which is available at <a href="/#contact">Contact Me</a> section at the bottom.</p>
                <p> Have your own key? Use the form below and I will encrypt my resume with it</p>
-                <form action="https://api.jwhite.network/encrypted_resume" method="POST" enctype="multipart/form-data" target="">
-                    <input name="key" type="file">
+                <form id="resumse_form">
+                    <input name="key" type="file" required>
                     <button type="submit">Encrypt</button>
                 </form>
            </div>
@@ -379,7 +380,7 @@
 
                         <div class="timeline-content">
                             <h4>Cisco</h4>
-                            <p> In February of 2020, I earned my CCNA in routing and switching. You can verify it <a href="https://www.youracclaim.com/badges/3c3e96fd-a51c-493c-b8c9-3d35d4001466/public_url" target="_blank">here</a></p>
+                            <p> In February of 2020, I earned my CCNA in routing and switching. You can verify it <a href="https://www.youracclaim.com/badges/3c3e96fd-a51c-493c-b8c9-3d35d4001466/public_url" target="_blank" rel="noopener noreferrer" >here</a></p>
                         </div>
      
                     </div> <!-- /timeline-block -->
@@ -441,7 +442,7 @@
 
                     <p class="desc"> I consider Python my main programming language. The majority of my projects are in Python.
                         It is an incredibly useful language and I am continuing to develop with it. If you want to see projects that I have worked on then check out 
-                        <a href="https://projects.jwhite.network" target="_blank">my project site</a>.</p>
+                        <a href="https://projects.jwhite.network" target="_blank" rel="noopener noreferrer" >my project site</a>.</p>
 
                     </div>
 
@@ -452,7 +453,7 @@
                     <span class="icon"><i class="icon-docker"></i></span>
  
                   <div class="service-content">
-                      <h3><a class="dockerpink" target="_blank" href="https://hub.docker.com/u/cyb3rjak3/">Docker</a></h3>
+                      <h3><a class="dockerpink" target="_blank" rel="noopener noreferrer"  href="https://hub.docker.com/u/cyb3rjak3/">Docker</a></h3>
                       <p class="desc"> I have started to Docker it for hosting multiple applications on a single server. I have also started creating custom docker images for use in GitLab CI, available <a class="emaillink" href="https://blog.jwhite.network/Continuous-Integration/">here</a>.</p> 
  
                    </div>
@@ -551,12 +552,12 @@
                    I take pride in making my systems as secure as they can be. This website is PCI DSS, HPIAA, NIST compliant.
                    It gets A+ in security from
                    <ul>
-                       <li><a href="https://www.ssllabs.com/ssltest/analyze.html?d=www.jwhite.network&s=104.27.153.17" target="_blank"> SSL Labs</a></li>
-                       <li><a href="https://www.htbridge.com/ssl/?id=826sE8Kz" target="_blank">HT Bridge</a></li>
-                       <li><a href="https://internet.nl/site/www.jwhite.network/442286/" target="_blank">Internet.nl</a></li>
-                       <li><a href="https://tls.imirhil.fr/https/www.jwhite.network" target="_blank">CryptCheck</a></li>
-                       <li><a target="_blank" href="https://observatory.mozilla.org/analyze/www.jwhite.network" >Mozilla Observatory</a></li>
-                       <li><a target="_blank" href="https://securityheaders.com/?followRedirects=on&q=www.jwhite.network"> Security Header</a></li>
+                       <li><a href="https://www.ssllabs.com/ssltest/analyze.html?d=www.jwhite.network&s=104.27.153.17" rel="noopener noreferrer"  target="_blank"> SSL Labs</a></li>
+                       <li><a href="https://www.htbridge.com/ssl/?id=826sE8Kz" target="_blank" rel="noopener noreferrer" >HT Bridge</a></li>
+                       <li><a href="https://internet.nl/site/www.jwhite.network/442286/" target="_blank" rel="noopener noreferrer" >Internet.nl</a></li>
+                       <li><a href="https://tls.imirhil.fr/https/www.jwhite.network" target="_blank" rel="noopener noreferrer" >CryptCheck</a></li>
+                       <li><a target="_blank" href="https://observatory.mozilla.org/analyze/www.jwhite.network" rel="noopener noreferrer" >Mozilla Observatory</a></li>
+                       <li><a target="_blank" href="https://securityheaders.com/?followRedirects=on&q=www.jwhite.network" rel="noopener noreferrer" > Security Header</a></li>
                    </ul>
                    You can see from Observatory that I started at a D+, but the tests improved over time as I learned and improved.
                 </p>
@@ -608,8 +609,8 @@
                </div>
 
                <h5>PGP Public Keys</h5>
-               <p><a title="Personal PGP Key" class="keylink" href="keys/WebsitePublic.asc" download="jake@jwhite.network.asc" > Personal Key </a> <br>  Key ID: <a class="keylink" target="_blank" href="https://keyserver.ubuntu.com/pks/lookup?search=0x1804B469&fingerprint=on&op=index"> 0x1804B469 </a> <br>
-               <a title="Website PGP Key" class="keylink" href="keys/WebAdmin.asc" download="admin@jwhite.network.asc"> Web Admin Key </a> <br> Key ID:<a class="keylink" target="_blank" href="https://keyserver.ubuntu.com/pks/lookup?search=0x0251CFF1&fingerprint=on&op=index"> 0x0251CFF1 </a> <br>
+               <p><a title="Personal PGP Key" class="keylink" href="keys/WebsitePublic.asc" download="jake@jwhite.network.asc" > Personal Key </a> <br>  Key ID: <a class="keylink" target="_blank" rel="noopener noreferrer"  href="https://keyserver.ubuntu.com/pks/lookup?search=0x1804B469&fingerprint=on&op=index"> 0x1804B469 </a> <br>
+               <a title="Website PGP Key" class="keylink" href="keys/WebAdmin.asc" download="admin@jwhite.network.asc"> Web Admin Key </a> <br> Key ID:<a class="keylink" target="_blank" rel="noopener noreferrer"  href="https://keyserver.ubuntu.com/pks/lookup?search=0x0251CFF1&fingerprint=on&op=index"> 0x0251CFF1 </a> <br>
                <!--<a title="SHA256 Sum File" class="keylinks" href="keys/sha256sum.txt" download="sha256sum.txt"> SHA256 sum </a>-->
             </p>
 
@@ -632,11 +633,11 @@
              <div class="col-six tab-full pull-right social">
 
                  <ul class="footer-social">
-                     <li><a target="_blank" href="https://www.linkedin.com/in/jacob-white-01/"><i class="fab fa-1x fa-linkedin"></i></a></li>
-                     <li><a target="_blank" href="https://twitter.com/Cyb3r_Jak3"><i class="fab fa-1x fa-twitter"></i></a></li>
-                     <li><a target="_blank" href="https://keybase.io/cyb3rjak3"><i class="fab fa-1x fa-keybase"></i></a></li>
-                     <li><a target="_blank" href="https://github.com/Cyb3r-Jak3"><i class="fab fa-1x fa-github"></i></a></li>
-                     <li><a target="_blank" href="https://gitlab.com/Cyb3r-Jak3"><i class="fab fa-1x fa-gitlab"></i></a> </li>
+                     <li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jacob-white-01/"><i class="fab fa-1x fa-linkedin"></i></a></li>
+                     <li><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Cyb3r_Jak3"><i class="fab fa-1x fa-twitter"></i></a></li>
+                     <li><a target="_blank" rel="noopener noreferrer" href="https://keybase.io/cyb3rjak3"><i class="fab fa-1x fa-keybase"></i></a></li>
+                     <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/Cyb3r-Jak3"><i class="fab fa-1x fa-github"></i></a></li>
+                     <li><a target="_blank" rel="noopener noreferrer" href="https://gitlab.com/Cyb3r-Jak3"><i class="fab fa-1x fa-gitlab"></i></a> </li>
                  </ul>
                  <p> Last Updated: 14 June 2020 </p>
              </div>
