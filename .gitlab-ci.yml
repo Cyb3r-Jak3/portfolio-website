@@ -26,7 +26,7 @@ html_test:
 
 Self_Host_Deploy:
   stage: deploy_self
-  image: cyb3rjak3/docker-curl-ssh
+  image: registry.gitlab.com/cyb3r-jak3/docker-ssh-curl/docker-curl-ssh:latest
   before_script:
   - eval $(ssh-agent -s)
   - echo "$SSH_P_KEY" | tr -d '\r' | ssh-add - > /dev/null
@@ -39,7 +39,7 @@ Self_Host_Deploy:
 
 Clear_Dev_Cache:
   stage: deploy_self
-  image: cyb3rjak3/docker-curl-ssh
+  image: registry.gitlab.com/cyb3r-jak3/docker-ssh-curl/docker-curl-ssh:latest
   script:
     - >
       sleep 10;
@@ -52,6 +52,9 @@ dast:
     DAST_WEBSITE: https://portfolio.jwhite.network
     DAST_FULL_SCAN_ENABLED: "true"
     DAST_REQUEST_HEADERS: "User-Agent: DAST/1.0"
+  rules:
+      - if: '$CI_COMMIT_BRANCH == "master" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
+
           
 
 Firebase_Deploy:
@@ -73,7 +76,7 @@ Firebase_Deploy:
 
 Clear_Public_Cache:
   stage: clear
-  image: cyb3rjak3/docker-curl-ssh
+  image: registry.gitlab.com/cyb3r-jak3/docker-ssh-curl/docker-curl-ssh:latest
   script:
     - >
       curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache" -H "$API_KEY" -H "Content-Type: application/json"  --data '{"files":["https://www.jwhite.network/*"]}'
