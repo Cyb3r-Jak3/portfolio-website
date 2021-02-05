@@ -2657,3 +2657,7 @@ footer .copyright span:last-child::after {
 .dockerpink:hover{
 	color: #cc005f;
 }
+.fit-icon {
+	height: 60px;
+	width: 60px;
+}
