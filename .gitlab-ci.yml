@@ -24,27 +24,6 @@ html_test:
      - public/*
    expire_in: 1 week
 
-Self_Host_Deploy:
-  stage: deploy_self
-  image: registry.gitlab.com/cyb3r-jak3/docker-ssh-curl/docker-curl-ssh:latest
-  before_script:
-  - eval $(ssh-agent -s)
-  - echo "$SSH_P_KEY" | tr -d '\r' | ssh-add - > /dev/null
-  - cat $SSH_KNOWN > ~/.ssh/known_hosts
-  script:
-  - scp -rp -P 2222 public/*  $DeployUser@$ServerIP:$RPath
-  environment:
-    name: Self_Host
-    url: https://portfolio.jwhite.network
-
-Clear_Dev_Cache:
-  stage: deploy_self
-  image: registry.gitlab.com/cyb3r-jak3/docker-ssh-curl/docker-curl-ssh:latest
-  script:
-    - >
-      sleep 10;
-      curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache" -H "$API_KEY" -H "Content-Type: application/json"  --data '{"files":["https://portfolio.jwhite.network/*"]}'
-
 dast:
   stage: dast
   dependencies: []
