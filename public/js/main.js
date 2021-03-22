@@ -242,7 +242,7 @@
 
 })(jQuery);
 
-$("#resumse_form").submit(function downloadFile(evt) {
+$("#resume_form").submit(function downloadFile(evt) {
 	evt.preventDefault();
 	var formData = new FormData($(this)[0]);
 	var req = new XMLHttpRequest();
