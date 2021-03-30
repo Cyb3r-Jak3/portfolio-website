@@ -1,9 +1,5 @@
 stages:
   - test
-  - deploy_self
-  - dast
-  - deploy_firebase
-  - clear
 
 include:
   - template: Dependency-Scanning.gitlab-ci.yml
@@ -11,22 +7,7 @@ include:
   - template: Secret-Detection.gitlab-ci.yml
   - template: DAST.gitlab-ci.yml
 
-html_test:
-  stage: test
-  image: cyb3rjak3/html5validator:latest-slim
-  script:
-    - date=`date +"%d %B %Y (%T %Z)"`
-    - sed -i "/BUILD_DATE/{s//$date/g}"  public/index.html
-    - head public/index.html -n 11 | grep Built
-    - html5validator --root public/ --also-check-css --log INFO --format json --ignore-re Attribute "built" Element "meta"
-  artifacts:
-   paths:
-     - public/*
-   expire_in: 1 week
-
 dast:
-  stage: dast
-  dependencies: []
   variables: 
     DAST_WEBSITE: https://portfolio.jwhite.network
     DAST_FULL_SCAN_ENABLED: "true"
@@ -35,34 +16,3 @@ dast:
       - if: '$CI_COMMIT_BRANCH == "master" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
         changes:
         - public/*
-
-          
-
-Firebase_Deploy:
-  stage: deploy_firebase
-  image: devillex/docker-firebase
-  before_script:
-    - npm i -g firebase-tools 
-  script:
-    - firebase use --token $FIREBASE_TOKEN personal-website-e2713
-    - firebase deploy --message "Commit $CI_COMMIT_TITLE, Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_TOKEN
-  environment:
-    name: Public
-    url: https://www.jwhite.network
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE != "schedule"'
-      changes:
-        - public/*
-        - firebase.json
-
-Clear_Public_Cache:
-  stage: clear
-  image: registry.gitlab.com/cyb3r-jak3/docker-ssh-curl/docker-curl-ssh:latest
-  script:
-    - >
-      curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache" -H "$API_KEY" -H "Content-Type: application/json"  --data '{"files":["https://www.jwhite.network/*"]}'
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE != "schedule"'
-      changes:
-        - public/*
-        - firebase.json
