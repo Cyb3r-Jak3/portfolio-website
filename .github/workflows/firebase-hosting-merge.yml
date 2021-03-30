@@ -14,8 +14,8 @@ jobs:
         run: npm i -g firebase-tools 
       - name: Deploy to Firebase
         run: |
-          firebase use --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PERSONAL_WEBSITE_E2713 }} personal-website-e2713
-          firebase deploy --message "Commit $CI_COMMIT_TITLE, Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PERSONAL_WEBSITE_E2713 }}
+          firebase use --token ${{ secrets.FIREBASE_TOKEN }} personal-website-e2713
+          firebase deploy --message "Commit $CI_COMMIT_TITLE, Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
 
       # - uses: FirebaseExtended/action-hosting-deploy@v0
       #   with:
