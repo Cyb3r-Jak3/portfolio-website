@@ -2,12 +2,11 @@ name: Build & Check
 
 on:
   push:
-    branches:
-      - master
     paths:
       - public/**
       - nginx.conf
       - Dockerfile
+      - .github/workflows/main.yml
 
 jobs:
   Docker:
@@ -15,11 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Get Branch
-        run: echo "BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
-
-      - name: Setup Source For GitHub
-        run: echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
+    - name: Login To GitHub
+      uses: docker/login-action@v1 
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.CR_PAT }}
 
       - name: Build Portfolio Docker
         run: |
@@ -32,5 +32,5 @@ jobs:
         run: docker inspect ghcr.io/cyb3r-jak3/portfolio_website:latest 
 
       - name: Push
-        if: github.event_name == 'push' && env.BRANCH == 'master'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: docker push ghcr.io/cyb3r-jak3/portfolio_website:latest
