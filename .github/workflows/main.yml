@@ -11,6 +11,8 @@ on:
 jobs:
   Docker:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_SLUG: ghcr.io/cyb3r-jak3/portfolio_website
     steps:
       - uses: actions/checkout@v2
 
@@ -22,16 +24,43 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: Build Portfolio Docker
+      - name: Docker Meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          flavor: |
+            latest=true
+          images: ${{ env.DOCKER_SLUG }}
+          labels: |
+            maintainer=Cyb3r Jak3 jake@jwhite.network
+            org.opencontainers.image.vendor=cyb3rjak3
+
+      - name: Change Date
         run: |
             date=`date +"%d %B %Y (%T %Z)"`
             sed -i "/BUILD_DATE/{s//$date/g}"  public/index.html
             head public/index.html -n 11 | grep Built
-            docker build . --tag ghcr.io/cyb3r-jak3/portfolio_website:latest --cache-from ghcr.io/cyb3r-jak3/portfolio_website:latest
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2.1.6
+        with:
+          path: /tmp/.buildx-cache
+          key: buildx-${{ github.sha }}
+          restore-keys: buildx-
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1.5.1
+
+      - name: Build Portfolio Docker
+        uses: docker/build-push-action@v2.6.1
+        with:
+          platforms: linux/amd64
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+          file: Dockerfile
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          push: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
       - name: Inspect
-        run: docker inspect ghcr.io/cyb3r-jak3/portfolio_website:latest 
-
-      - name: Push
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: docker push ghcr.io/cyb3r-jak3/portfolio_website:latest
+        run: docker inspect ${{ env.DOCKER_SLUG }}:latest 
