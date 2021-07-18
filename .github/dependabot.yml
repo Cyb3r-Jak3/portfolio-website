@@ -10,6 +10,7 @@ updates:
         - "dependencies"
     reviewers:
         - "Cyb3r-Jak3"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

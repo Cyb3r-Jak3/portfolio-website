@@ -1,7 +1,7 @@
 .gitlab-ci.yml
 .git**
-firebase.json
 LICENSE
 README.md
 websitecolors
 Attribution.txt
+.vscode/**
