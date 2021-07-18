@@ -60,8 +60,8 @@ jobs:
           file: Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          load: ${{ github.event_name != 'push' && github.ref != 'refs/heads/master' }}
+          load: ${{ github.event_name == 'push' && github.ref != 'refs/heads/master' }}
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
 
       - name: Inspect
-        run: docker inspect ${{ env.DOCKER_SLUG }}:latest 
+        run: docker buildx imagetools inspect ${{ env.DOCKER_SLUG }}:latest
