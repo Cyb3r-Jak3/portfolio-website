@@ -1,0 +1,7 @@
+/*
+    Permissions-Policy: interest-cohort=()
+    Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+    Referrer-Policy: no-referrer-when-downgrade
+    X-XSS-Protection: 1; mode=block
+    X-Frame-Options: SAMEORIGIN
+    Content-Security-Policy: report-uri https://jwhite.report-uri.com/r/d/csp/wizard
