@@ -40,6 +40,15 @@ jobs:
             date=`date +"%d %B %Y (%T %Z)"`
             sed -i "/BUILD_DATE/{s//$date/g}"  public/index.html
 
+      - name: HTML5 Validation
+        uses: Cyb3r-Jak3/html5validator-action@v7.0.0
+        with:
+            root: public/
+            format: json
+            css: true
+            log_level: INFO
+            extra: --ignore-re Attribute "built"
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1.6.0
 
@@ -55,10 +64,3 @@ jobs:
           load: ${{ github.event_name == 'push' && github.ref != 'refs/heads/master' }}
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
 
-      - name: Inspect
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: docker buildx imagetools inspect ${{ env.DOCKER_SLUG }}:latest
-
-      - name: Inspect
-        if: github.ref != 'refs/heads/master'
-        run: docker inspect ${{ env.DOCKER_SLUG }}:latest
