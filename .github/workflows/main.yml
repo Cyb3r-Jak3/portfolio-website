@@ -41,7 +41,7 @@ jobs:
             sed -i "/BUILD_DATE/{s//$date/g}"  public/index.html
 
       - name: HTML5 Validation
-        uses: Cyb3r-Jak3/html5validator-action@v7.0.0
+        uses: Cyb3r-Jak3/html5validator-action@v7.1.0
         with:
             root: public/
             format: json
