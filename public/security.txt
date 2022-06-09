@@ -1,4 +1,4 @@
-Contact: mailto:admin+security@jwhite.network
+Contact: mailto:security@cyberjake.xyz
 Encryption: https://www.cyberjake.xyz/keys/WebAdmin.asc
 Encryption: https://raw.githubusercontent.com/Cyb3r-Jak3/portfolio-website/master/public/keys/WebAdmin.asc
 Preferred-Languages: en
