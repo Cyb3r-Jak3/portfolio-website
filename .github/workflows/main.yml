@@ -32,7 +32,7 @@ jobs:
             latest=true
           images: ${{ env.DOCKER_SLUG }}
           labels: |
-            maintainer=Cyb3r Jak3 jake@jwhite.network
+            maintainer=Cyb3r Jak3 git@cyberjake.xyz
             org.opencontainers.image.vendor=cyb3rjak3
 
       - name: Change Date
