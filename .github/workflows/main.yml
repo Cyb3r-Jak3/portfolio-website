@@ -18,10 +18,14 @@ on:
 jobs:
   Docker:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     env:
       DOCKER_SLUG: ghcr.io/cyb3r-jak3/portfolio_website
     steps:
       - uses: actions/checkout@v3
+        submodules: true
+        fetch-depth: 0
 
       # - name: Change Date
         # run: |
