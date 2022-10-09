@@ -3,7 +3,14 @@ name: Build & Check
 on:
   push:
     paths:
-      - public/**
+      - archetyes/**
+      - assets/**
+      - content/**
+      - data/**
+      - layouts/**
+      - static/**
+      - themes/**
+      - config.yaml
       - nginx.conf
       - Dockerfile
       - .github/workflows/main.yml
