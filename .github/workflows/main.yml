@@ -42,13 +42,13 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: HTML5 Validation
-        uses: Cyb3r-Jak3/html5validator-action@v7.1.1
-        with:
-            root: public/
-            format: json
-            css: true
-            log_level: INFO
+      # - name: HTML5 Validation
+      #   uses: Cyb3r-Jak3/html5validator-action@v7.1.1
+      #   with:
+      #       root: public/
+      #       format: json
+      #       css: true
+      #       log_level: INFO
             # extra: --ignore-re Attribute "built"
 
       - name: Login To GitHub
@@ -83,4 +83,12 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+          outputs: type=docker,dest=/tmp/image.tar
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: site-artifacts
+          path: |
+            /tmp/image.tar
+            public/
